@@ -2,3 +2,37 @@
   margin: 0;
   padding: 0;
 }
+body {
+  font-family: "Roboto", sans-serif;
+  --blue: #726abc;
+  --bg: #e4f7fe;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+header {
+  width: calc(100% - 100px);
+  /* height: 100px; */
+  padding: 10px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--blue);
+  /* background-color: var(--bg); */
+}
+header > h1 {
+  font-weight: 1200;
+  font-size: 40px;
+}
+.navigation {
+  display: flex;
+}
+.navigation > li {
+  margin: 0 30px;
+  font-size: 20px;
+  font-weight: 600;
+}
