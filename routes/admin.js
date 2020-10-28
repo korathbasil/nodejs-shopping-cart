@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/admin", (req, res) => {
+router.get("/", (req, res) => {
   res.render("admin/home", { admin: true });
 });
 

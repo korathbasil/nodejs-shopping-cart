@@ -68,3 +68,13 @@ header {
   margin-left: 30px;
   cursor: pointer;
 }
+
+/* Sidebar styles */
+.sidebar {
+  width: 300px;
+  margin: 0 30px 20px 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  height: calc(100vh - 150px);
+}
