@@ -6,7 +6,7 @@ body {
   font-family: "Roboto", sans-serif;
   --blue: #726abc;
   --bg: #e4f7fe;
-  background-color: var(--bg);
+  /* background-color: var(--bg); */
 }
 a {
   color: black;
@@ -24,7 +24,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: var(--bg);
   border-radius: 20px;
 }
 .header-left {
@@ -63,7 +63,7 @@ header {
   padding: 10px 30px;
   border-radius: 99px;
   background-color: var(--blue);
-  color: white;
+  color: var(--bg);
   font-weight: 800;
   font-size: 20px;
   margin-left: 30px;
@@ -78,7 +78,7 @@ header {
   width: 300px;
   margin: 0 20px 20px 20px;
   padding: 20px;
-  background-color: white;
+  background-color: var(--bg);
   border-radius: 20px;
   height: calc(100vh - 160px);
 }
@@ -90,6 +90,7 @@ header {
   padding: 10px;
   border-radius: 10px;
   background-color: white;
+  margin: 20px;
 }
 .product-card > img {
   width: 100%;
@@ -97,4 +98,10 @@ header {
   object-fit: cover;
   outline: none;
   border-radius: 10px;
+}
+.cards {
+  background-color: var(--bg);
+  border-radius: 20px;
+  height: calc(100vh - 120px);
+  width: calc(100% - 100px);
 }

@@ -4,14 +4,22 @@ const hbs = require("express-handlebars");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const fileUpload = require("express-fileupload");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const adminRouter = require("./routes/admin");
 
+const db = require("./dbConfig");
+
 // App config
 const app = express();
 const PORT = process.env.PORT || 8000;
+// MongoDB connection
+db.connect((err) => {
+  if (err) console.log(err);
+  else console.log("Database connected");
+});
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -32,6 +40,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(fileUpload());
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);

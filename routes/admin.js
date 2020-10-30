@@ -1,8 +1,20 @@
 const express = require("express");
 const router = express.Router();
 
+// Controller imports
+const productController = require("../controllers/productController");
+
 router.get("/", (req, res) => {
   res.render("admin/home", { admin: true });
+});
+router.get("/add-product", (req, res) => {
+  res.render("admin/add-products", { admin: true });
+});
+router.post("/add-product", (req, res) => {
+  console.log(req.body);
+  console.log(req.files.image);
+  productController.test(req.body);
+  res.send("submited");
 });
 
 module.exports = router;
