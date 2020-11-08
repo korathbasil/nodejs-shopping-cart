@@ -14,7 +14,6 @@ const db = require("./dbConfig");
 
 // App config
 const app = express();
-const PORT = process.env.PORT || 8000;
 // MongoDB connection
 db.connect((err) => {
   if (err) console.log(err);

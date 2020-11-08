@@ -1,9 +1,6 @@
 const mongoClient = require("mongodb").MongoClient;
 
-let state = {
-  db: null,
-};
-
+let db;
 module.exports.connect = (done) => {
   const connectionURL = "mongodb://localhost:27017";
   const dbName = "TechMart";
@@ -13,12 +10,12 @@ module.exports.connect = (done) => {
       done(err);
     } else {
       //   console.log(data.db(dbName));
-      state.db = data.db(dbName);
+      db = data.db(dbName);
       done();
     }
   });
 };
 
 module.exports.getDb = () => {
-  return state.db;
+  return db;
 };

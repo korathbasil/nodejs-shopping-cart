@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// Controller imports
-const productController = require("../controllers/productController");
+const productHelpers = require("../helpers/product-helpers");
 
 router.get("/", (req, res) => {
   res.render("admin/home", { admin: true });
@@ -13,7 +12,7 @@ router.get("/add-product", (req, res) => {
 router.post("/add-product", (req, res) => {
   console.log(req.body);
   console.log(req.files.image);
-  productController.test(req.body);
+  productHelpers.addProduct(req.body);
   res.send("submited");
 });
 
