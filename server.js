@@ -7,7 +7,7 @@ const logger = require("morgan");
 const fileUpload = require("express-fileupload");
 
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
+const usersRouter = require("./routes/user");
 const adminRouter = require("./routes/admin");
 
 const db = require("./config/dbConfig");
@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(fileUpload());
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/user", usersRouter);
 app.use("/admin", adminRouter);
 
 // catch 404 and forward to error handler
