@@ -10,6 +10,9 @@ router.get("/", function (req, res, next) {
 router.get("/login", (req, res) => {
   res.render("user/login");
 });
+router.post("/login", (req, res) => {
+  userHelper.doLogin(req.body);
+});
 router.get("/signup", (req, res) => {
   res.render("user/signup");
 });
