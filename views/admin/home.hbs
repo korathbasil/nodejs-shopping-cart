@@ -1,4 +1,40 @@
 <section>
+    <div class="productsView">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr>
+                    <th scope="row">1</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{this.category}}</td>
+                    <td><img style="height: 150px ; width: 150px; object-fit: cover;" src="{{this.image}}" alt=""></td>
+                </tr>
+                {{/each}}
+                {{!-- <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr> --}}
+            </tbody>
+        </table>
+    </div>
     <a href="/admin/add-product"><button>Add product</button></a>
     <h3>Products</h3>
 </section>

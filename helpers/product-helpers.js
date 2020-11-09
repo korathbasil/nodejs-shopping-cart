@@ -7,7 +7,8 @@ module.exports = {
       let products = await db
         .getDb()
         .collection(collection.PRODUCT_COLLECTION)
-        .find();
+        .find()
+        .toArray();
       resolve(products);
     });
   },
@@ -16,7 +17,7 @@ module.exports = {
       name: product.name,
       category: product.category,
       price: product.price,
-      description: product.description,
+      description: product.desc,
       image: imagePath,
     };
     db.getDb()
