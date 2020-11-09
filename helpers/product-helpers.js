@@ -6,10 +6,7 @@ module.exports = {
       .collection("product")
       .insertOne(product)
       .then((data) => {
-        cb(true);
+        cb(data.ops[0]._id);
       });
   },
-  // test: () => {
-  //   console.log(db);
-  // },
 };
