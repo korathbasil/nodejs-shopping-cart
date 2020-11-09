@@ -1,11 +1,22 @@
 <section class="cards">
     <div class="cards-container">
-        <div class="product-card">
+        {{!-- <div class="product-card">
             <img src="https://photographycourse.net/wp-content/uploads/2014/11/Landscape-Photography-steps.jpg" alt="">
             <div class="product-info">
                 <h3>Iphone 11 pro</h3>
                 <button>Add to cart</button>
             </div>
+        </div> --}}
+        {{#each products}}
+        <div class="card" style="width: 18rem;">
+            <img src="{{this.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{this.name}}</h5>
+                <p class="card-text">{{this.price}}</p>
+                <p>{{this.description}}</p>
+                <a href="#" class="btn btn-primary">Add to cart</a>
+            </div>
         </div>
+        {{/each}}
     </div>
 </section>
