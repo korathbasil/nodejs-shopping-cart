@@ -1,12 +1,29 @@
-const db = require("../dbConfig");
+const db = require("../config/dbConfig");
+const collection = require("../config/collections");
 
 module.exports = {
-  addProduct: (product, cb) => {
+  getAllProducts: () => {
+    return new Promise(async (resolve, reject) => {
+      let products = await db
+        .getDb()
+        .collection(collection.PRODUCT_COLLECTION)
+        .find();
+      resolve(products);
+    });
+  },
+  addProduct: (product, imagePath, cb) => {
+    const newProduct = {
+      name: product.name,
+      category: product.category,
+      price: product.price,
+      description: product.description,
+      image: imagePath,
+    };
     db.getDb()
       .collection("product")
-      .insertOne(product)
+      .insertOne(newProduct)
       .then((data) => {
-        cb(data.ops[0]._id);
+        cb();
       });
   },
 };
