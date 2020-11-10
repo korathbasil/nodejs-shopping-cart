@@ -19,6 +19,10 @@
                     <td>{{this.category}}</td>
                     <td><img style="height: 150px ; width: 150px; object-fit: contain;" src="{{this.image}}" alt="">
                     </td>
+                    <td>
+                        <a class="btn btn-warning" href="/admin/edit-product/{{this._id}}">Edit</a>
+                        <a class="btn btn-danger" href="/admin/delete-product/{{this._id}}">Delete</a>
+                    </td>
                 </tr>
                 {{/each}}
             </tbody>

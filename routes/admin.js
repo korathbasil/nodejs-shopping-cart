@@ -28,5 +28,13 @@ router.post("/add-product", (req, res) => {
     res.render("admin/add-products");
   });
 });
+router.get("/edit-product/:id", (req, res) => {
+  const productId = req.params.id;
+  console.log(productId);
+});
+router.get("/delete-product/:id", (req, res) => {
+  const productId = req.params.id;
+  console.log(productId);
+});
 
 module.exports = router;
