@@ -10,7 +10,11 @@
                 <li><a href="/admin">admin</a></li>
                 <li><a href="">Orders</a></li>
                 <li><a href="">Cart</a></li>
+                {{#if user}}
+                <p>{{user.name}}</p>
+                {{else}}
                 <li><a href="/user/login">Login</a></li>
+                {{/if}}
             </ul>
             <button>Login</button>
             {{!-- <div class="dropdown">
