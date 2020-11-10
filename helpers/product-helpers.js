@@ -1,5 +1,6 @@
 const db = require("../config/dbConfig");
 const collection = require("../config/collections");
+const { ObjectId } = require("mongodb");
 
 module.exports = {
   getAllProducts: () => {
@@ -26,5 +27,16 @@ module.exports = {
       .then((data) => {
         cb();
       });
+  },
+  editProduct: (productId) => {},
+  deleteProduct: (productId) => {
+    return new Promise((resolve, reject) => {
+      db.getDb()
+        .collection(collection.PRODUCT_COLLECTION)
+        .removeOne({ _id: ObjectId(productId) })
+        .then(() => {
+          resolve();
+        });
+    });
   },
 };
