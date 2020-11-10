@@ -12,6 +12,7 @@
                 <li><a href="">Cart</a></li>
                 {{#if user}}
                 <p>{{user.name}}</p>
+                <li><a href="/user/logout">Logout</a></li>
                 {{else}}
                 <li><a href="/user/login">Login</a></li>
                 {{/if}}
