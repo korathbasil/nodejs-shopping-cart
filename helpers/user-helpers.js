@@ -14,5 +14,25 @@ module.exports = {
         });
     });
   },
-  doLogin: (userData) => {},
+  doLogin: (userData) => {
+    return new Promise(async (resolve, reject) => {
+      let user = await db
+        .getDb()
+        .collection(collection.USER_COLLECTION)
+        .findOne({ email: userData.email });
+      if (user) {
+        let isPasswordMatch = await bcrypt.compare(
+          userData.password,
+          user.password
+        );
+        if (isPasswordMatch) {
+          resolve({ status: true, user: user });
+        } else {
+          reject({ status: false, message: "Incorrect Password" });
+        }
+      } else {
+        reject({ status: false, message: "User not found" });
+      }
+    });
+  },
 };

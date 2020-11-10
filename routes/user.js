@@ -19,7 +19,7 @@ router.get("/signup", (req, res) => {
 router.post("/signup", (req, res) => {
   console.log(req.body);
   userHelper.doSignup(req.body).then(() => {
-    res.send("user created");
+    res.redirect("/");
   });
 });
 module.exports = router;
