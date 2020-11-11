@@ -1,0 +1,15 @@
+<section>
+    <form action="/admin/edit-product" enctype="multipart/form-data" method="POST">
+        <p>Name</p>
+        <input name="name" type="text" value="{{product.name}}">
+        <p>category</p>
+        <input name="category" type="text" value="{{product.category}}">
+        <p>price</p>
+        <input name="price" type="text" value="{{product.price}}">
+        <p>description</p>
+        <input name="desc" type="text" value="{{product.description}}">
+        <p>image</p>
+        <input type="file" name="image" id="">
+        <button type="submit">Submit</button>
+    </form>
+</section>

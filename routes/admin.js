@@ -30,7 +30,9 @@ router.post("/add-product", (req, res) => {
 });
 router.get("/edit-product/:id", (req, res) => {
   const productId = req.params.id;
-  console.log(productId);
+  productHelpers.getProductDetails(productId).then((product) => {
+    res.render("admin/edit-product", { product });
+  });
 });
 router.get("/delete-product/:id", (req, res) => {
   const productId = req.params.id;
@@ -38,5 +40,5 @@ router.get("/delete-product/:id", (req, res) => {
     res.redirect("/admin");
   });
 });
-
+router.post("/edit-product");
 module.exports = router;

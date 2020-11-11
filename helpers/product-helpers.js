@@ -28,6 +28,16 @@ module.exports = {
         cb();
       });
   },
+  getProductDetails: (productId) => {
+    return new Promise((resolve, reject) => {
+      db.getDb()
+        .collection(collection.PRODUCT_COLLECTION)
+        .findOne({ _id: ObjectId(productId) })
+        .then((product) => {
+          resolve(product);
+        });
+    });
+  },
   editProduct: (productId) => {},
   deleteProduct: (productId) => {
     return new Promise((resolve, reject) => {
