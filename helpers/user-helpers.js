@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const db = require("../config/dbConfig");
 const collection = require("../config/collections");
+const { ObjectID } = require("mongodb");
 
 module.exports = {
   doSignup: (userData) => {
@@ -8,7 +9,7 @@ module.exports = {
       userData.password = await bcrypt.hash(userData.password, 10);
       db.getDb()
         .collection(collection.USER_COLLECTION)
-        .insertOne(userData)
+        .insertOne({ ...userData, cart: [] })
         .then((data) => {
           resolve(data.ops[0]);
         });
@@ -34,5 +35,17 @@ module.exports = {
         reject({ status: false, message: "User not found" });
       }
     });
+  },
+  addToCart: (userId, productId) => {
+    db.getDb()
+      .collection(collection.USER_COLLECTION)
+      .updataOne(
+        { _id: ObjectID(userId) },
+        {
+          $push: {
+            cart: ObjectID(productId),
+          },
+        }
+      );
   },
 };
