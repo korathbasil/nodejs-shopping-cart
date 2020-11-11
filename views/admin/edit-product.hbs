@@ -9,8 +9,13 @@
         <p>description</p>
         <input name="desc" type="text" value="{{product.description}}">
         <p>image</p>
-        <img src="{{product.image}}" style="width: 200px; height: 200px; object-fit: contain;" alt="">
-        <input type="file" name="image" id="">
+        <img id="image" src="{{product.image}}" style="width: 200px; height: 200px; object-fit: contain;" alt="">
+        <input type="file" name="image" onchange="changeImageView(event)">
         <button type="submit">Submit</button>
     </form>
 </section>
+<script>
+    const changeImageView = (e) => {
+        document.getElementById("image").src = URL.createObjectURL(e.target.files[0])
+    }
+</script>
