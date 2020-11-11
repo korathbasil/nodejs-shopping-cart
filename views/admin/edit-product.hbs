@@ -1,5 +1,5 @@
 <section>
-    <form action="/admin/edit-product" enctype="multipart/form-data" method="POST">
+    <form action="/admin/edit-product/{{product._id}}" enctype="multipart/form-data" method="POST">
         <p>Name</p>
         <input name="name" type="text" value="{{product.name}}">
         <p>category</p>
@@ -9,6 +9,7 @@
         <p>description</p>
         <input name="desc" type="text" value="{{product.description}}">
         <p>image</p>
+        <img src="{{product.image}}" style="width: 200px; height: 200px; object-fit: contain;" alt="">
         <input type="file" name="image" id="">
         <button type="submit">Submit</button>
     </form>

@@ -40,5 +40,30 @@ router.get("/delete-product/:id", (req, res) => {
     res.redirect("/admin");
   });
 });
-router.post("/edit-product");
+router.post("/edit-product/:id", (req, res) => {
+  const productId = req.params.id;
+  if (req.files.image) {
+    image = req.files.image;
+    imageName = new Date().toISOString();
+    imageExt = image.name.split(".")[image.name.split(".").length - 1];
+    imagePath = `/images/products/${imageName}.${imageExt}`;
+    image.mv(
+      `./public/images/products/${imageName}.${imageExt}`,
+      (err, done) => {
+        if (!err) {
+          // res.render("admin/add-products", { admin: true });
+        } else {
+          console.log(err);
+        }
+      }
+    );
+    productHelpers.editProduct(productId, req.body, imagePath).then(() => {
+      res.redirect("/admin");
+    });
+  } else {
+    productHelpers.editProduct(productId, req.body).then(() => {
+      res.redirect("/admin");
+    });
+  }
+});
 module.exports = router;

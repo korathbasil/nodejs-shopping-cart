@@ -38,7 +38,29 @@ module.exports = {
         });
     });
   },
-  editProduct: (productId) => {},
+  editProduct: (productId, updatedDetails, newImagePath) => {
+    return new Promise((resolve, reject) => {
+      db.getDb()
+        .collection(collection.PRODUCT_COLLECTION)
+        .updateOne(
+          {
+            _id: ObjectId(productId),
+          },
+          {
+            $set: {
+              name: updatedDetails.name,
+              category: updatedDetails.category,
+              price: updatedDetails.price,
+              description: updatedDetails.desc,
+              image: newImagePath,
+            },
+          }
+        )
+        .then(() => {
+          resolve();
+        });
+    });
+  },
   deleteProduct: (productId) => {
     return new Promise((resolve, reject) => {
       db.getDb()
