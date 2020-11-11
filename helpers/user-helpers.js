@@ -10,7 +10,7 @@ module.exports = {
         .collection(collection.USER_COLLECTION)
         .insertOne(userData)
         .then((data) => {
-          resolve();
+          resolve(data.ops[0]);
         });
     });
   },

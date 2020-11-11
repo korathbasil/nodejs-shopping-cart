@@ -29,7 +29,9 @@ router.post("/signup", (req, res) => {
   console.log(req.body);
   userHelper
     .doSignup(req.body)
-    .then(() => {
+    .then((user) => {
+      req.session.isLoggedin = true;
+      req.session.user = user;
       res.redirect("/");
     })
     .catch((e) => {
