@@ -63,12 +63,12 @@ module.exports = {
           {
             $lookup: {
               from: collection.PRODUCT_COLLECTION,
-              let: { productList: "$cart" },
+              let: { userCart: "$cart" },
               pipeline: [
                 {
                   $match: {
                     $expr: {
-                      $in: ["$_id", "$$productList"],
+                      $in: ["$_id", "$$userCart"],
                     },
                   },
                 },
