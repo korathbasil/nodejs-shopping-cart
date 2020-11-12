@@ -37,15 +37,48 @@ module.exports = {
     });
   },
   addToCart: (userId, productId) => {
-    db.getDb()
-      .collection(collection.USER_COLLECTION)
-      .updataOne(
-        { _id: ObjectID(userId) },
-        {
-          $push: {
-            cart: ObjectID(productId),
+    return new Promise((resolve, reject) => {
+      db.getDb()
+        .collection(collection.USER_COLLECTION)
+        .updateOne(
+          { _id: ObjectID(userId) },
+          {
+            $push: {
+              cart: ObjectID(productId),
+            },
+          }
+        )
+        .then(() => {
+          resolve();
+        });
+    });
+  },
+  getCartProducts: (userId) => {
+    return new Promise(async (resolve, reject) => {
+      let userWithLoadedCart = await db
+        .getDb()
+        .collection(collection.USER_COLLECTION)
+        .aggregate([
+          { $match: { _id: ObjectID(userId) } },
+          {
+            $lookup: {
+              from: collection.PRODUCT_COLLECTION,
+              let: { productList: "$cart" },
+              pipeline: [
+                {
+                  $match: {
+                    $expr: {
+                      $in: ["$_id", "$$productList"],
+                    },
+                  },
+                },
+              ],
+              as: "cart",
+            },
           },
-        }
-      );
+        ])
+        .toArray();
+      resolve(userWithLoadedCart[0].cart);
+    });
   },
 };

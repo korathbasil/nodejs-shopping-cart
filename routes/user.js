@@ -42,10 +42,17 @@ router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
+router.get("/cart", (req, res) => {
+  userHelper.getCartProducts(req.session.user._id).then((products) => {
+    res.render("user/cart", { products });
+  });
+});
 router.get("/add-to-cart/:id", (req, res) => {
   console.log(req.session.user._id);
   console.log(req.params.id);
   console.log("object");
-  userHelper.addToCart(req.session.user._id, req.params.id);
+  userHelper.addToCart(req.session.user._id, req.params.id).then(() => {
+    res.redirect("/");
+  });
 });
 module.exports = router;
