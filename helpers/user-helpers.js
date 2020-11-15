@@ -46,12 +46,16 @@ module.exports = {
         (product) => product.productId == productId
       );
       if (productIndexInCart != -1) {
+        let selectedProduct = user.cart[productIndexInCart];
         db.getDb()
           .collection(collection.USER_COLLECTION)
           .updateOne(
-            { _id: ObjectID(userId) },
             {
-              $inc: { "cart.1.quantity": 1 },
+              _id: ObjectID(userId),
+              cart: selectedProduct,
+            },
+            {
+              $inc: { "cart.$.quantity": 1 },
             }
           );
       } else {
