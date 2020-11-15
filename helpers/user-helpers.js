@@ -44,7 +44,10 @@ module.exports = {
           { _id: ObjectID(userId) },
           {
             $push: {
-              cart: ObjectID(productId),
+              cart: {
+                product: ObjectID(productId),
+                quantity: 1,
+              },
             },
           }
         )
