@@ -37,24 +37,41 @@ module.exports = {
     });
   },
   addToCart: (userId, productId) => {
-    return new Promise((resolve, reject) => {
-      db.getDb()
+    return new Promise(async (resolve, reject) => {
+      let user = await db
+        .getDb()
         .collection(collection.USER_COLLECTION)
-        .updateOne(
-          { _id: ObjectID(userId) },
-          {
-            $push: {
-              cart: {
-                product: ObjectID(productId),
-                quantity: 1,
+        .findOne({ _id: ObjectID(userId) });
+      let productIndexInCart = user.cart.findIndex(
+        (product) => product.productId == productId
+      );
+      if (productIndexInCart != -1) {
+        db.getDb()
+          .collection(collection.USER_COLLECTION)
+          .updateOne(
+            { _id: ObjectID(userId) },
+            {
+              $inc: { "cart.1.quantity": 1 },
+            }
+          );
+      } else {
+        db.getDb()
+          .collection(collection.USER_COLLECTION)
+          .updateOne(
+            { _id: ObjectID(userId) },
+            {
+              $push: {
+                cart: {
+                  productId: ObjectID(productId),
+                  quantity: 1,
+                },
               },
-            },
-          }
-        )
-        .then((data) => {
-          console.log(data);
-          resolve();
-        });
+            }
+          )
+          .then((data) => {
+            resolve();
+          });
+      }
     });
   },
   getCartProducts: (userId) => {
