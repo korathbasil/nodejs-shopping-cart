@@ -48,7 +48,8 @@ module.exports = {
             },
           }
         )
-        .then(() => {
+        .then((data) => {
+          console.log(data);
           resolve();
         });
     });

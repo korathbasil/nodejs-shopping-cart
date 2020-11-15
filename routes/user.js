@@ -48,11 +48,8 @@ router.get("/cart", (req, res) => {
   });
 });
 router.get("/add-to-cart/:id", (req, res) => {
-  console.log(req.session.user._id);
-  console.log(req.params.id);
-  console.log("object");
   userHelper.addToCart(req.session.user._id, req.params.id).then(() => {
-    res.redirect("/");
+    res.json({ status: true, count: 12 });
   });
 });
 module.exports = router;
