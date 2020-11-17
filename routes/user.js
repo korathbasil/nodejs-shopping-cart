@@ -44,6 +44,7 @@ router.get("/logout", (req, res) => {
 });
 router.get("/cart", (req, res) => {
   userHelper.getCartProducts(req.session.user._id).then((products) => {
+    console.log(products);
     res.render("user/cart", { products });
   });
 });

@@ -93,12 +93,12 @@ module.exports = {
                 {
                   $match: {
                     $expr: {
-                      $in: ["$_id", "$$userCart"],
+                      $in: ["$_id", "$$userCart.productId"],
                     },
                   },
                 },
               ],
-              as: "cart",
+              as: "cart.products",
             },
           },
         ])
