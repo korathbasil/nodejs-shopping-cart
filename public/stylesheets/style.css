@@ -57,7 +57,7 @@ header {
   display: flex;
   align-items: center;
 }
-.header-right > button {
+.header-right-button {
   outline: none;
   border: none;
   padding: 10px 30px;

@@ -53,4 +53,7 @@ router.get("/add-to-cart/:id", (req, res) => {
     res.json({ status: true, count: 12 });
   });
 });
+router.get("/checkout", (req, res) => {
+  resw.render("user/checkout");
+});
 module.exports = router;

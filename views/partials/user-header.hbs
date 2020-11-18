@@ -4,30 +4,19 @@
             <h1>TechMart.com</h1>
         </a>
     </div>
-    <nav>
-        <div class="header-right">
-            <ul class="navigation">
-                <li><a href="/admin">admin</a></li>
-                <li><a href="">Orders</a></li>
-                <li><a href="/user/cart">Cart <span class="badge badge-success" id="cart-count">1</span></a></li>
-                {{#if user}}
-                <p>{{user.name}}</p>
-                <li><a href="/user/logout">Logout</a></li>
-                {{else}}
-                <li><a href="/user/login">Login</a></li>
-                {{/if}}
-            </ul>
-            <button>Login</button>
-            {{!-- <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ccount
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Login</a>
-                </div>
-            </div> --}}
-        </div>
+    <nav class="header-right">
+
+        <ul class="navigation">
+            <li><a href="/admin">admin</a></li>
+            <li><a href="">Orders</a></li>
+            <li><a href="/user/cart">Cart <span class="badge badge-success" id="cart-count">1</span></a></li>
+            {{#if user}}
+            <p>{{user.name}}</p>
+            <li><a href="/user/logout">Logout</a></li>
+            {{else}}
+            <li><a class="header-right-button" href="/user/login">Login</a></li>
+            {{/if}}
+        </ul>
 
     </nav>
 </header>
